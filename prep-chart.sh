@@ -5,9 +5,9 @@ helmChartUrl="https://argoproj.github.io/argo-helm"
 helmChartVersion="5.6.0"
 
 
-# helm repo add $helmChartName $helmChartUrl
-# helm pull $helmChartName/$helmChartName --version $helmChartVersion
-# tar xvfz $helmChartName-$helmChartVersion.tgz
+helm repo add $helmChartName $helmChartUrl
+helm pull $helmChartName/$helmChartName --version $helmChartVersion
+tar xvfz $helmChartName-$helmChartVersion.tgz
 
 
 create_list(){
@@ -32,7 +32,6 @@ create_value_file(){
     rm -rf temp
   done < image-list.txt
 }
-
 
 # create_list
 create_value_file
