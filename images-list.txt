@@ -1,0 +1,3 @@
+ghcr.io/dexidp/dex:v2.35.1-distroless
+public.ecr.aws/docker/library/redis:7.0.5-alpine
+quay.io/argoproj/argocd:v2.4.14

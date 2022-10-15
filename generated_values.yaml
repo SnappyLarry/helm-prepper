@@ -1,0 +1,10 @@
+---
+dex:
+  image:
+    repository: ghcr.io/dexidp/dex
+redis:
+  image:
+    repository: public.ecr.aws/docker/library/redis
+global:
+  image:
+    repository: quay.io/argoproj/argocd
