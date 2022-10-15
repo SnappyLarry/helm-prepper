@@ -1,0 +1,2 @@
+FROM %%SOURCE%% as img
+LABEL "RESPONSABLE1"="Laurent Gauthier"
