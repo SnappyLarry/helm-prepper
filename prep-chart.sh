@@ -9,6 +9,7 @@ get_chart(){
   helm repo add $helmChartName $helmChartUrl
   if [ ! -f "$helmChartName-$helmChartVersion.tgz" ]; then
     helm pull $helmChartName/$helmChartName --version $helmChartVersion
+    tar xfz $helmChartName-$helmChartVersion.tgz
   else
     echo "[Info] The chart's tarball is already present. No need to pull"
     tar xfz $helmChartName-$helmChartVersion.tgz
