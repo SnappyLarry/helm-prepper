@@ -12,10 +12,10 @@ tar xvfz $helmChartName-$helmChartVersion.tgz
 
 create_list(){
   helm template argo-cd \
-      | yq '..|.image? | select(.)' \
-      | sort -u \
-      | sed 's/---//' \
-      | sed -r '/^\s*$/d' > image-list.txt
+    | yq '..|.image? | select(.)' \
+    | sort -u \
+    | sed 's/---//' \
+    | sed -r '/^\s*$/d' > image-list.txt
 }
 
 create_value_file(){
@@ -33,5 +33,5 @@ create_value_file(){
   done < image-list.txt
 }
 
-# create_list
+create_list
 create_value_file
