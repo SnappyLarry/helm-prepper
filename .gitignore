@@ -1,3 +1,7 @@
-argo*
 image-list.txt
 generated_values.yaml
+*.tgz
+*.tar.gz
+/tmp
+---
+kube-prometheus-stack

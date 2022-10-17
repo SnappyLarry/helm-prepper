@@ -46,7 +46,7 @@ create_values_file(){
       cat temp.yaml | yq $yamlPathToImage'.image += {"tag": '\"$imageTag\"'}' >> ./tmp/generated_values-$loopCounter.yaml
     else
       echo "[Info] couldnt find image $imageRepo in main chart. will look into subchart"
-      subValuesFile=$(grep -inrl --include \*.yaml $imageRepo)
+      subValuesFile=$(grep -inrl --include \values.yaml $imageRepo)
       subChart=$(sed "s/\/values\.yaml//" <<< $subValuesFile | sed "s:.*/::" )
       subchartYamlPath=.$subChart$(yq '.. | select(. == '\"$imageRepo\"') | path' $subValuesFile \
       | sed 's/-//; s/ //; s/^/./' \
@@ -58,7 +58,7 @@ create_values_file(){
     rm -rf temp.yaml
   done < image-list.txt
   yq eval-all '. as $item ireduce ({}; . * $item )' ./tmp/*.yaml >> generated_values.yaml
-  rm -rf ./tmp
+  # rm -rf ./tmp
   echo "[Info] Success! Here is the content of your generated_values.yaml:"
   cat generated_values.yaml
 }
@@ -86,7 +86,7 @@ import_to_acr(){
   fi
 }
 
-get_chart
-create_list
-import_to_acr
+# get_chart
+# create_list
+# import_to_acr
 create_values_file
