@@ -85,7 +85,7 @@ import_to_acr(){
   fi
 }
 
-get_chart
-create_list
-import_to_acr
+# get_chart
+# create_list
+# import_to_acr
 create_values_file
