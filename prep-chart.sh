@@ -58,14 +58,13 @@ create_values_file(){
     rm -rf temp.yaml
   done < image-list.txt
   yq eval-all '. as $item ireduce ({}; . * $item )' ./tmp/*.yaml >> generated_values.yaml
-  # rm -rf ./tmp
+  rm -rf ./tmp
   echo "[Info] Success! Here is the content of your generated_values.yaml:"
   cat generated_values.yaml
 }
 
 import_to_acr(){
   if [[ $(wc -l < image-list.txt) -gt 1 ]]; then
-    az acr login -n $targetRegistry
     while read source; do
       tag="$targetRegistry/$(printf -- "%s" "${source#*/}")"
       echo "Building $source with tag $tag"
@@ -86,7 +85,7 @@ import_to_acr(){
   fi
 }
 
-# get_chart
-# create_list
-# import_to_acr
+get_chart
+create_list
+import_to_acr
 create_values_file
